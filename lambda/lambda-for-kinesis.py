@@ -97,12 +97,11 @@ def lambda_handler(event, context):
         my_string = {'faceId' : face_id_visitor, 'otp': otp, 'expiration' : str(int(time.time() + 300))}
         dynamo_passcodes_table.put_item(Item=my_string)
         time.sleep(60)
-        
     else:
-        phone_number_owner = '6466230205'
+        phone_number_owner = '2016914391' #'6466230205'
         link_visitor_image = 'https://smart-door-trr.s3.amazonaws.com/' + fileName
         
-        link_visitor_details_form = 'https://visitor-information.s3.amazonaws.com/WebPage_Visitor_Info.html?fileName='+fileName+"&faceId="+faceId
+        link_visitor_details_form = 'https://visitor-information.s3.amazonaws.com/WebPage_Visitor_Info_backup.html?fileName='+str(fileName)+'&faceId='+str(faceId)
         print("To Owner: ",link_visitor_details_form)
         sendMessageToOwner(phone_number_owner, link_visitor_image, link_visitor_details_form)
         time.sleep(60)
