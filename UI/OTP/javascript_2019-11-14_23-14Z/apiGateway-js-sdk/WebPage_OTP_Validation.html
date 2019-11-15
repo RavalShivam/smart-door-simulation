@@ -35,7 +35,7 @@ var additionalParams = {
 
 apigClient.otpPost(params, body, additionalParams)
 .then(function(result){
-	if(result=="false")
+	if(result.data=="false")
 	{
 		document.getElementById("demo").innerHTML="Sorry, the Door can't be opened";
 		document.getElementById("demo").style.color="red";
@@ -44,7 +44,8 @@ apigClient.otpPost(params, body, additionalParams)
 	}
 	else
 	{
-		document.getElementById("demo").innerHTML="Welcome, the Door is open " + result;
+		document.getElementById("demo").innerHTML="Welcome, the Door is open " + result.data;
+		console.log(result);
 		document.getElementById("demo").style.color="green";
 		document.getElementById("demo").style.fontSize="xx-large";
 	
